@@ -54,3 +54,6 @@ class ImageViewset(ModelViewSet):
             img = queryset.filter(timestamp__gte=from_, timestamp__lte=to_)
             serializer = self.serializer_class(img, many=True)
             return Response({"data": serializer.data})
+        else:
+            serializer = self.serializer_class(queryset, many=True)
+            return Response({"data": serializer.data})
